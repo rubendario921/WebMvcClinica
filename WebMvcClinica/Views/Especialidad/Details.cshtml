@@ -1,0 +1,60 @@
+﻿@model WebMvcClinica.Models.Especialidade
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Detalles de la Especialidad</h1>
+
+<div>
+    <h4>Especialidade</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.EspId)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.EspId)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.EspName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.EspName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.EspDescription)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.EspDescription)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.EspStatus)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.EspStatus)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.EspAdd)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.EspAdd)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.EspUpdate)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.EspUpdate)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.EspDelete)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.EspDelete)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.EspId">Editar</a> |
+    <a asp-action="Index">Regresar</a>
+</div>

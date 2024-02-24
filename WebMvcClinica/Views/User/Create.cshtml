@@ -1,0 +1,113 @@
+﻿@model WebMvcClinica.Models.User
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>User</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="UsuUser" class="control-label"></label>
+                <input asp-for="UsuUser" class="form-control" />
+                <span asp-validation-for="UsuUser" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="UsuPassword" class="control-label"></label>
+                <input asp-for="UsuPassword" class="form-control" />
+                <span asp-validation-for="UsuPassword" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="UsuName" class="control-label"></label>
+                <input asp-for="UsuName" class="form-control" />
+                <span asp-validation-for="UsuName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="UsuLastname" class="control-label"></label>
+                <input asp-for="UsuLastname" class="form-control" />
+                <span asp-validation-for="UsuLastname" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="UsuEmail" class="control-label"></label>
+                <input asp-for="UsuEmail" class="form-control" />
+                <span asp-validation-for="UsuEmail" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="UsuSueldo" class="control-label"></label>
+                <input asp-for="UsuSueldo" class="form-control" />
+                <span asp-validation-for="UsuSueldo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="UsuStatus" class="control-label"></label>
+                <input asp-for="UsuStatus" class="form-control" />
+                <span asp-validation-for="UsuStatus" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="UsuIntentos" class="control-label"></label>
+                <input asp-for="UsuIntentos" class="form-control" />
+                <span asp-validation-for="UsuIntentos" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="UsuPerfil" class="control-label"></label>
+                <input asp-for="UsuPerfil" class="form-control" />
+                <span asp-validation-for="UsuPerfil" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="UsuAdd" class="control-label"></label>
+                <input asp-for="UsuAdd" class="form-control" />
+                <span asp-validation-for="UsuAdd" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="UsuUpdate" class="control-label"></label>
+                <input asp-for="UsuUpdate" class="form-control" />
+                <span asp-validation-for="UsuUpdate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="UsuDelete" class="control-label"></label>
+                <input asp-for="UsuDelete" class="form-control" />
+                <span asp-validation-for="UsuDelete" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="RolId" class="control-label"></label>
+                <input asp-for="RolId" class="form-control" />
+              @*   <select asp-for="RolId" class="form-control" asp-items="ViewBag.RolId"></select> *@
+            </div>
+            <div class="form-group">
+                <label asp-for="UsuImage" class="control-label"></label>
+                <input asp-for="UsuImage" class="form-control" name="file" type="file" onchange="ShowPreview(this)" />
+                <img src="" id="ImagePreview" alt="ImagePreview" />
+                <span asp-validation-for="UsuImage" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    <script>
+        function ShowPreview(input) {
+            if (input.files && input.files[0]) {
+                var ImagenDir = new FileReader();
+                ImagenDir.onload = function (e) {
+                    $('#ImagePreview').attr('src', e.target.result);
+                    $('#ImagePreview').attr('width', 400);
+                    $('#ImagePreview').attr('height', 400);
+                }
+                ImagenDir.readAsDataURL(input.files[0]);
+            }
+        }
+    </script>
+}
+
+

@@ -1,0 +1,131 @@
+﻿@model IEnumerable<WebMvcClinica.Models.User>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table" id="myTable">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.UsuUser)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UsuPassword)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UsuName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UsuLastname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UsuEmail)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UsuSueldo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UsuStatus)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UsuIntentos)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UsuPerfil)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UsuAdd)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UsuUpdate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UsuDelete)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Rol)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UsuImage)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UsuUser)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UsuPassword)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UsuName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UsuLastname)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UsuEmail)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UsuSueldo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UsuStatus)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UsuIntentos)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UsuPerfil)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UsuAdd)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UsuUpdate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UsuDelete)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Rol.RolId)
+                </td>
+                <td>
+                    @{
+                        if (item.UsuImage != null)
+                        {
+                            <img src="data:image;base64,@Convert.ToBase64String(item.UsuImage)" width="50" height="50" alt="usuImage" />
+                        }
+                    }
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.UsuId">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.UsuId">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.UsuId">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            var table = new DataTable('#myTable', {
+                language: {
+                    url: 'https://cdn.datatables.net/plug-ins/1.13.6/i18n/es-ES.json'
+                },
+            });
+        })
+    </script>
+}

@@ -4,7 +4,7 @@ namespace WebMvcClinica.Services
 {
     public interface IServiceSpeciality
     {
-        IEnumerable<Especialidade> getAll();
+        IEnumerable<Especialidade>? getAll();
         Especialidade getById(int id);
         Especialidade getByName(string name);
         bool save(Especialidade especialidade);

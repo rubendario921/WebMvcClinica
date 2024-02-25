@@ -13,23 +13,25 @@ namespace WebMvcClinica.Services
             _context = context;
         }
 
-        public IEnumerable<Especialidade> getAll()
+        public IEnumerable<Especialidade>? getAll()
         {
             try
             {
-                var result = _context.Especialidades.Where(esp => esp.EspStatus.Equals("A")).ToList();
-                if (result.Count == 0)
-                {
-                    return null;
-                }
-                else
+                var result = _context.Especialidades.Where(esp => esp.EspStatus.Equals("A"));
+                if (result.Any())
                 {
                     return result;
                 }
+                else
+                {
+                    return null;
+                }
             }
-            catch
+            catch (Exception ex)
             {
+                Console.WriteLine($"Error en getAll: {ex}");
                 return null;
+
             }
         }
 

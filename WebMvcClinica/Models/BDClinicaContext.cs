@@ -155,6 +155,10 @@ namespace WebMvcClinica.Models
                     .HasColumnName("esp_description")
                     .IsFixedLength();
 
+                entity.Property(e => e.EspImage)
+                    .HasColumnType("varbinary(max)")
+                    .HasColumnName("esp_image");
+                    
                 entity.Property(e => e.EspName)
                     .HasMaxLength(50)
                     .HasColumnName("esp_name")

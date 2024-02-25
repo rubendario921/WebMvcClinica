@@ -50,8 +50,27 @@ namespace WebMvcClinica.Controllers
         //POST
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create(Especialidade especialidade)
+        public IActionResult Create(Especialidade especialidade, IFormFile file)
         {
+
+            //Ingresar imagen
+            if (file != null)
+            {
+                if (file.Length > 0)
+                {
+                    long length = file.Length;
+                    if (length < 0)
+                    {
+                        return BadRequest();
+                    }
+                    using var fileStream = file.OpenReadStream();
+                    //Convertir a binario
+                    byte[] bytes = new byte[length];
+                    fileStream.Read(bytes, 0, (int)file.Length);
+                    especialidade.EspImage = bytes;
+                }
+            }
+
             var resultSave = _serviceSpeciality.save(especialidade);
             if (resultSave)
             {

@@ -9,7 +9,7 @@
 <p>
     <a asp-action="Create">Create New</a>
 </p>
-<table class="table" id="myTable">
+<table class="table">
     <thead>
         <tr>
             <th>
@@ -17,6 +17,9 @@
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.EspDescription)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EspImage)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.EspStatus)
@@ -34,45 +37,41 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.EspName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.EspDescription)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.EspStatus)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.EspAdd)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.EspUpdate)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.EspDelete)
-                </td>
-                <td>
-                    <a asp-action="Details" asp-route-id="@item.EspId">Details</a> |
-                    <a asp-action="Edit" asp-route-id="@item.EspId">Edit</a> |
-                    <a asp-action="Delete" asp-route-id="@item.EspId">Delete</a>
-                </td>
-            </tr>
-        }
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.EspName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EspDescription)
+            </td>
+            <td>
+                    @{
+                        if(item.EspImage != null)
+                        {
+                            <img src="data:image;base64,@Convert.ToBase64String(item.EspImage)" width="50" height="50" alt="EspImage" />
+                        }
+                    }
+                
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EspStatus)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EspAdd)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EspUpdate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EspDelete)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.EspId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.EspId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.EspId">Delete</a>
+            </td>
+        </tr>
+}
     </tbody>
 </table>
-
-@section Scripts{
-    <script>
-        $(document).ready(function () { 
-            var table = new DataTable('#myTable', {
-                language: {
-                    url: 'https://cdn.datatables.net/plug-ins/1.13.6/i18n/es-ES.json'
-                },
-            });
-        })
-    </script>
-}
